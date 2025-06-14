@@ -84,7 +84,7 @@ const TaskList = () => {
   return (
     <div className="min-h-screen bg-white p-6">
       <div className="text-center mb-10">
-        <motion.h1
+        {/* <motion.h1
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -93,7 +93,7 @@ const TaskList = () => {
           <FiList className="text-blue-700" />
           Task Manager
         </motion.h1>
-        <p className="text-sm text-gray-600">All your tasks in one place</p>
+        <p className="text-sm text-gray-600">All your tasks in one place</p> */}
       </div>
 
       {/* Edit Form */}
