@@ -22,19 +22,19 @@ const statusStyles = {
   pending: {
     color: "text-red-700",
     bgColor: "bg-red-200",
-    icon: <AlertCircle className="inline-block w-5 h-5 mr-2 align-text-bottom" />,
+    icon: <AlertCircle className="w-5 h-5 mr-2" />,
     label: "Pending",
   },
   "in-progress": {
     color: "text-orange-700",
     bgColor: "bg-orange-200",
-    icon: <Loader2 className="inline-block w-5 h-5 mr-2 align-text-bottom animate-spin" />,
+    icon: <Loader2 className="w-5 h-5 mr-2 animate-spin" />,
     label: "In Progress",
   },
   completed: {
     color: "text-green-700",
     bgColor: "bg-green-200",
-    icon: <CheckCircle2 className="inline-block w-5 h-5 mr-2 align-text-bottom" />,
+    icon: <CheckCircle2 className="w-5 h-5 mr-2" />,
     label: "Completed",
   },
 };
@@ -94,13 +94,13 @@ const AddNew: React.FC = () => {
   return (
     <motion.form
       onSubmit={handleSubmit}
-      className="max-w-xl mx-auto mt-10 p-10 bg-white border border-blue-300 rounded-3xl shadow-md space-y-8"
+      className="w-full max-w-2xl mx-auto px-4 py-8 sm:p-10 bg-white border border-blue-300 rounded-3xl shadow-md space-y-8"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
     >
       <motion.h2
-        className="text-3xl font-bold text-center text-blue-900 mb-8"
+        className="text-3xl font-bold text-center text-blue-900"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.15 }}
@@ -109,7 +109,7 @@ const AddNew: React.FC = () => {
       </motion.h2>
 
       {/* Task Name */}
-      <div className="space-y-1">
+      <div className="space-y-2">
         <Label htmlFor="taskname" className="text-blue-800 font-semibold">
           Task Name *
         </Label>
@@ -120,12 +120,12 @@ const AddNew: React.FC = () => {
           value={formData.taskname}
           onChange={handleChange}
           placeholder="Enter task name"
-          className="bg-blue-50 border border-blue-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 rounded-lg transition"
+          className="bg-blue-50 border border-blue-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 rounded-lg"
         />
       </div>
 
       {/* Description */}
-      <div className="space-y-1">
+      <div className="space-y-2">
         <Label htmlFor="description" className="text-blue-800 font-semibold">
           Description
         </Label>
@@ -135,27 +135,27 @@ const AddNew: React.FC = () => {
           rows={4}
           value={formData.description}
           onChange={handleChange}
-          className="w-full rounded-lg border border-blue-300 bg-blue-50 px-4 py-3 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+          className="w-full rounded-lg border border-blue-300 bg-blue-50 px-4 py-3 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
           placeholder="Optional description"
         />
       </div>
 
-      {/* Status - RADIO BUTTONS */}
-      <div className="space-y-1">
+      {/* Status */}
+      <div className="space-y-2">
         <Label className="text-blue-800 font-semibold">Status</Label>
-        <div className="flex gap-6">
+        <div className="flex flex-col sm:flex-row gap-4">
           {(Object.keys(statusStyles) as (keyof typeof statusStyles)[]).map(
             (key) => {
               const status = statusStyles[key];
               return (
                 <label
                   key={key}
-                  className={`flex items-center cursor-pointer rounded-lg px-4 py-2 border 
+                  className={`flex items-center px-4 py-2 rounded-lg border cursor-pointer transition
                     ${
                       formData.status === key
                         ? `border-blue-600 bg-blue-100 ${status.color}`
                         : "border-gray-300 bg-white text-gray-700"
-                    } transition`}
+                    }`}
                 >
                   <input
                     type="radio"
@@ -165,7 +165,7 @@ const AddNew: React.FC = () => {
                     onChange={handleStatusChange}
                     className="hidden"
                   />
-                  <span>{status.icon}</span>
+                  {status.icon}
                   <span className="font-semibold">{status.label}</span>
                 </label>
               );
@@ -175,7 +175,7 @@ const AddNew: React.FC = () => {
       </div>
 
       {/* Deadline */}
-      <div className="space-y-1">
+      <div className="space-y-2">
         <Label htmlFor="deadline" className="text-blue-800 font-semibold">
           Deadline
         </Label>
@@ -185,13 +185,13 @@ const AddNew: React.FC = () => {
           type="date"
           value={formData.deadline}
           onChange={handleChange}
-          className="bg-blue-50 border border-blue-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 rounded-lg transition"
+          className="bg-blue-50 border border-blue-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 rounded-lg"
         />
       </div>
 
-      {/* Submit Button wrapped in motion.div for hover scale */}
+      {/* Submit Button */}
       <motion.div
-        whileHover={{ scale: 1.05 }}
+        whileHover={{ scale: 1.03 }}
         style={{ display: "inline-block", width: "100%" }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -200,7 +200,7 @@ const AddNew: React.FC = () => {
         <Button
           type="submit"
           disabled={loading}
-          className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-transform active:scale-95"
+          className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition"
         >
           {loading ? "Creating..." : "Create Task"}
         </Button>
