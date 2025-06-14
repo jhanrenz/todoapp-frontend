@@ -133,7 +133,7 @@ const TaskList = () => {
               animate={{ opacity: 1 }}
               className="text-xl font-semibold text-blue-700 mb-4"
             >
-              Task List
+              Task Lists
             </motion.h2>
           )}
           <motion.div
