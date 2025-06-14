@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Loader2, Clock, CheckCircle2, Hourglass } from "lucide-react";
-import { FiList, FiTrash2, FiEdit } from "react-icons/fi";
+import { FiTrash2, FiEdit } from "react-icons/fi";
 import UpdateTaskList from "./UpdateTaskList";
 
 type Task = {
